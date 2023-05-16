@@ -222,6 +222,9 @@ add_subdirectory(src)
 # we set the GCG_DIR variable explicitly for the following examples/applications and unittests that depend on GCG.
 #
 set(GCG_DIR ${CMAKE_BINARY_DIR})
+
+include(CTest)
+if(BUILD_TESTING)
 #
 # add GCG tests
 #
@@ -246,6 +249,8 @@ add_custom_target(gcg_unittests)
 add_custom_target(gcg_all_executables DEPENDS gcg gcg_unittests)
 
 enable_testing()
+
+endif()
 
 if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
    include(FeatureSummary)
